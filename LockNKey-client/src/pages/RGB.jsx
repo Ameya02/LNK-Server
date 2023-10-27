@@ -26,10 +26,23 @@ const RGB = () => {
           });
        
         setPattern(pattern+value)
+        toast({
+            title: value+" Clicked",
+            status: 'info',
+            duration: 2000,
+        
+          
+        })
         }
         else{
-            let value = e.target.value
-            setError(`You can click a ${value} 2 times only`)
+            toast({
+                title: 'Warning',
+                description: "You can only click twice!",
+                status: 'warning',
+                duration: 6000,
+                isClosable: true,
+              
+            })
         }
       
 
@@ -41,7 +54,7 @@ const RGB = () => {
     const handleSubmit = async(e)  => {
         e.preventDefault();
         try {
-			
+			console.log(pattern)
 			setLoading(true);
 			const res = await axios.post(
 				"api/user/colorauth",

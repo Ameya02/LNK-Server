@@ -13,9 +13,11 @@ const userSchema = new mongoose.Schema({
 	},
     colorSecret:{
 		type: String,
+		default: "",
 	},
 	imgSecret:{
 		type: String,
+		default: "",
 	},
 	fac:{
 		type: Number,

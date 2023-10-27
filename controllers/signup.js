@@ -7,7 +7,6 @@ const { createToken } = require("../middlewares/userAuth.js");
 const signup = async (req, res, next) => {
 	try {
 		// Check if User exists, using email as an unique identifier, throw error if exist
-		console.log(req.body.data)
 		const userExists = await User.exists({ email: req.body.email });
 		if (userExists) throw new Error("User Already Exists");
 

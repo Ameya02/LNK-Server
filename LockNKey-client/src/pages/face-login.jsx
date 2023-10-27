@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import CamPreview from '../components/CamPreview';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, redirect } from 'react-router-dom';
 import {imageCapturer} from '../components/imageCapturer';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
@@ -33,13 +33,12 @@ function Facelogin() {
 			setLoading(false);
 			setTimeout(() => {
             localStorage.setItem("user", JSON.stringify(res.data.user))
-				navigate("/dashboard");
+            window.location.href = "/dashboard"
 			}, 1000);
 		} catch (err) {
-			e.target.reset();
-		  toast({
+		toast({
         title: 'Error Occurred',
-        description: err.message,
+        description: err.response.data.msg,
         status: 'error',
         duration: 6000,
         isClosable: true,

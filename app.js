@@ -34,6 +34,10 @@ mongoose.set('strictQuery', false);
 
 
 app.use("/api/user", userRoutes);
+app.get("/", (req, res) => {
+	console.log(res.locals.user)
+});
+
 
 
 

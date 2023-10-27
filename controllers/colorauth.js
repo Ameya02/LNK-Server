@@ -5,8 +5,8 @@ const color_auth = async (req, res, next) => {
     try {
 		if (!res.locals.user.fac) throw new Error("Can't Skip factor1");
 			
-        if (!res.locals.user._doc.colorSecert){
-
+        if (!res.locals.user._doc.colorSecret){
+			console.log("color_secret")
         const color_secret = await req.body.color_secret
         const hashedColor_Secret = await bcrypt.hash(color_secret, 10);
         await User.updateOne({ _id: res.locals.user._doc._id }, { colorSecret: hashedColor_Secret });

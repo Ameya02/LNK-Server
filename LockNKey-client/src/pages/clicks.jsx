@@ -2,7 +2,7 @@ import React from 'react';
 
 export  function Clicks() {
     return (
-        <div className='bg-blue-50 h-screen'  >
+        <div className='bg-lavender h-screen'  >
 
             <div className=' bg-blue-50 flex justify-center items-center h-5/6'>
                 <div className=' bg-white p-8 rounded-lg shadow-lg '>

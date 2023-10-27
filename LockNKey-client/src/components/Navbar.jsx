@@ -1,8 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-  
+  const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'))
+  const [loggedIn, setLoggedIn] = useState(user ? true : false)  
+  const logout = () => {
+    localStorage.removeItem('user')
+    setLoggedIn(false)
+    navigate('/login')
+  }
+  useEffect(()=>{},[loggedIn])
   return (
     <div className="bg-lavender w-[1440px]  overflow-hidden shrink-0 flex flex-row items-center justify-between py-2 px-[98px] box-border z-[0]">
     <div className="relative w-[130.18px] h-6">
@@ -25,11 +33,16 @@ const Navbar = () => {
       <div
         className="rounded-31xl bg-darkblue overflow-hidden flex flex-row items-center justify-center py-3 px-5 cursor-pointer text-left text-lavender border-[1px] border-solid border-neutral-10"
       >
+      {!loggedIn ? (
           <Link to={"/signup"}>
         <div className="relative tracking-[0.5px] leading-[24px] cursor-pointer" >
           Sign up
         </div>
         </Link>
+      ):( <div onClick={logout} className="relative tracking-[0.5px] leading-[24px] cursor-pointer" >
+          Logout
+        </div>)
+      }
       </div>
     </div>
   </div>

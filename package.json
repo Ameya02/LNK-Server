@@ -1,16 +1,16 @@
 {
-  "name": "FaceAuth",
+  "name": "LockNKey_server",
   "version": "1.0.0",
   "description": "device security through racerecongnition",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon app.js",
-    "client": "npm run dev --prefix ./client",
+    "client": "npm run dev --prefix ./LockNKey-client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
 
-  "author": "Ameya Bavkarr",
+  "author": "Ameya Bavkar",
   "license": "MIT",
   "bugs": {
   },
