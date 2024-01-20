@@ -14,7 +14,7 @@ const { compare, getFacialEmbeddings } = require("../face_recognition/recognize.
 const face_auth = async (req, res, next) => {
 	try {
 		// Check if facialEmbeddings exist, else a new one
-		if (!res.locals.user.fac==2) throw new Error("Can't Skip factor2");
+		if (!res.locals.user.fac>3) throw new Error("Can't Skip factor3");
 
 		if (!res.locals.user._doc.facialEmbeddings.length) {
 			// Generate Unified Facial Embeddings corresponding to the image buffer

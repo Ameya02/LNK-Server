@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import CamPreview from '../components/CamPreview';
-import { useNavigate, redirect } from 'react-router-dom';
 import {imageCapturer} from '../components/imageCapturer';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
@@ -8,7 +7,6 @@ function Facelogin() {
   const toast = useToast()
 
     const videoParentRef = useRef();
-    const navigate = useNavigate();
 
 	const [loading, setLoading] = useState(false);
 

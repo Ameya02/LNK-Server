@@ -9,9 +9,39 @@ export default function Signup() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
+    const [strength, setStrength] = useState(0);
+    const [checkPassword, setCheckPassword] = useState(0);
 	const [loading, setLoading] = useState(false);
+    const [showFormatTooltip, setShowFormatTooltip] = useState(false);
 
+    const showTooltip = () => {
+        setShowFormatTooltip(true);
+      };
+    
+      const hideTooltip = () => {
+        setShowFormatTooltip(false);
+      };
+    
+    const checkStrength = (value) => {
+        
+        let passwordStrength = 0;
+        if (value.length >= 8) passwordStrength++;
+        if (value.match(/[A-Z]/)) passwordStrength++;
+        if (value.match(/[0-9]/)) passwordStrength++;
+        if (value.match(/[^A-Za-z0-9]/)) passwordStrength++;
+        setStrength(passwordStrength);
+      };
+
+    const handlePassword = (e) => {
+        console.log(e.target.value)
+        if (e.target.value !== passwordRef.current.value) {
+            setCheckPassword(1);
+          } else {
+            setCheckPassword(0);
+          }
+    }
     const handleSubmit = async (e) => {
+        
         e.preventDefault();
 		try {
             if (!emailRef.current.value && !passwordRef.current.value && !passwordConfirmRef.current.value)
@@ -90,8 +120,22 @@ export default function Signup() {
                             ref={passwordRef}
                             name="psw"
                             required
-                            className="bg-inherit border-2 inline-block px-8 py-6 border-slate-300 focus:outline-none focus:border-b-4 focus:border-b-green-400 h-7   w-full"
+                            onChange={(e) => checkStrength(e.target.value)}
+                            className={`bg-inherit border-2 inline-block px-8 py-6 border-slate-300 focus:outline-none focus:border-b-4 h-7 w-full ${
+                            strength === 0
+                            ? "focus:border-b-red-400"
+                            : strength === 4
+                            ? "focus:border-b-green-400"
+                            : "focus:border-b-yellow-400"
+        }`}
+        onMouseEnter={showTooltip}
+          onMouseLeave={hideTooltip}
                         />
+                            {showFormatTooltip && (
+                                <div className="absolute text-[15px]   text-gray-600 z-10 bg-white  border border-gray-300 rounded p-2 mt-1 w-[300px]">
+            Password format: At least 8 characters, with upper and lower case letters, numbers, and special characters.
+          </div>
+        )}
                     </div>
 
                     <div>
@@ -104,7 +148,11 @@ export default function Signup() {
                             ref={passwordConfirmRef}
                             name="psw-repeat"
                             required
-                            className="bg-inherit border-2 inline-block px-8 py-6 border-slate-300 focus:outline-none focus:border-b-4 focus:border-b-green-400 h-7   w-full"
+                            onChange={(e) => handlePassword(e)}
+                            className={`bg-inherit border-2 inline-block px-8 py-6 border-slate-300 focus:outline-none focus:border-b-4 h-7   w-full
+                            ${ checkPassword
+                            ? "focus:border-b-red-400"
+                            : "focus:border-b-green-400" }`}
                         />
                     </div>
                     <div className="flex space-x-2">

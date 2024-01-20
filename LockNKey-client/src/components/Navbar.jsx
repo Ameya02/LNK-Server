@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+  console.log(import.meta.env.VITE_API_URL)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
   const [loggedIn, setLoggedIn] = useState(user ? true : false)  

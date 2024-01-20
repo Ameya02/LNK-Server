@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Aboutus = () => {
+    
     return (
 
         <div className="flex flex-col bg-lavender h-[80vh] items-center justify-center">

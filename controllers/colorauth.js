@@ -6,7 +6,6 @@ const color_auth = async (req, res, next) => {
 		if (!res.locals.user.fac) throw new Error("Can't Skip factor1");
 			
         if (!res.locals.user._doc.colorSecret){
-			console.log("color_secret")
         const color_secret = await req.body.color_secret
         const hashedColor_Secret = await bcrypt.hash(color_secret, 10);
         await User.updateOne({ _id: res.locals.user._doc._id }, { colorSecret: hashedColor_Secret });
@@ -19,7 +18,7 @@ const color_auth = async (req, res, next) => {
 		// If Color_Secrets matches, create a Cookie and append it to the Resonse Object
 		const token = createToken({ _id: res.locals.user._doc._id, fac: 2 }, "2h");
 		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
-		res.status(200).json({ access: true, fac: 2, msg: "Authentication Successful" });
+		res.status(200).json({ id:res.locals.user._doc._id,access: true, fac: 2, msg: "Authentication Successful" });
 		
 	} catch (err) {
 		console.error(err);
