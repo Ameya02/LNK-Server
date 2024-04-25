@@ -32,7 +32,7 @@ const face_auth = async (req, res, next) => {
 
 		// If Face matches, create a Cookie and append it to the Resonse Object
 		const token = createToken({ _id: res.locals.user._doc._id, fac: 4 }, "2h");
-		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
+		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000});
 		user = await User.findOne({ _id: res.locals.user._doc._id });
 		
 		res.status(200).json({ access: true, fac: 3, user:{ email: user["email"],createdAt:user["createdAt"]},  msg: "Authentication Successful" });

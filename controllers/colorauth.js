@@ -17,7 +17,7 @@ const color_auth = async (req, res, next) => {
 
 		// If Color_Secrets matches, create a Cookie and append it to the Resonse Object
 		const token = createToken({ _id: res.locals.user._doc._id, fac: 2 }, "2h");
-		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
+		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000 });
 		res.status(200).json({ id:res.locals.user._doc._id,access: true, fac: 2, msg: "Authentication Successful" });
 		
 	} catch (err) {

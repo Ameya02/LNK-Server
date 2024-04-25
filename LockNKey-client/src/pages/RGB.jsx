@@ -72,8 +72,9 @@ const RGB = () => {
         isClosable: true,
       });
       setLoading(false);
+      localStorage.setItem('fac',3)
       setTimeout(() => {
-        navigate("/imgauth");
+        navigate("/faceauth");
       }, 2000);
     } catch (err) {
       toast({

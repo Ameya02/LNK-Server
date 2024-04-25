@@ -33,7 +33,7 @@ mongoose
 app.use("/api/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("API are up and Running!!");
 });
 app.listen(PORT, console.log("server started at port: " + PORT));
 

@@ -19,7 +19,7 @@ const signup = async (req, res, next) => {
 
 		// If User created, create a Cookie and append it to the Resonse Object
 		const token = createToken({ _id: u._id, fac: 1 }, "2h");
-		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000, httpOnly: true });
+		res.cookie("engage_jwt", token, { maxAge: 2 * 60 * 60 * 1000});
 		res.status(200).json({ access: true, fac: 1, msg: "User Created Successfully" });
 	} catch (err) {
 		console.error(err);

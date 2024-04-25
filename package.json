@@ -9,11 +9,9 @@
     "client": "npm run dev --prefix ./LockNKey-client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
-
   "author": "Ameya Bavkar",
   "license": "MIT",
-  "bugs": {
-  },
+  "bugs": {},
   "dependencies": {
     "@tensorflow/tfjs-node": "^4.11.0",
     "bcrypt": "^5.0.1",
@@ -23,6 +21,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-mongo-sanitize": "^2.2.0",
+    "express-session": "^1.18.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.0",
     "morgan": "^1.10.0",

@@ -93,9 +93,10 @@ const ImageSelect = () => {
             duration: 6000,
             isClosable: true,
           });
+          localStorage.setItem('fac',2)
           setLoading(false);
           setTimeout(() => {
-            navigate("/faceauth");
+            navigate("/colorauth");
           }, 2000);
         } catch (err) {
           toast({

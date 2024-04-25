@@ -72,8 +72,9 @@ export default function Signup() {
                 duration: 6000,
                 isClosable: true,
               })
+            localStorage.setItem('fac',1)
 			setTimeout(() => {
-				navigate("/colorauth");
+				navigate("/imageauth");
 			}, 4000);
 		} catch (err) {
 			

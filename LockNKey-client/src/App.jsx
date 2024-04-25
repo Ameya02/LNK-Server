@@ -25,7 +25,7 @@ function App() {
       <Route element={<Login/>} path='/login'/>
       <Route element={<Signup/>} path='/signup'/>
       <Route element={<RGB/>} path='/colorauth'/>
-      <Route element={<ImageSelect/>} path='/imgauth'/>
+      <Route element={<ImageSelect/>} path='/imageauth'/>
       <Route element={<Facelogin/>} path='/faceauth'/>
       <Route element={<Dashboard/>} path='/dashboard'/>
       <Route/>

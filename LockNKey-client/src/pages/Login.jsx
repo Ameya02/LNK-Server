@@ -14,7 +14,7 @@ export default function Login() {
 		try {
 			setLoading(true);
 			const res = await axios.post(
-				"api/user/login",
+				"/api/user/login",
 				{
 					email: emailRef.current.value,
 					password: passwordRef.current.value,
@@ -30,9 +30,10 @@ export default function Login() {
                 duration: 6000,
                 isClosable: true,
               })
+            localStorage.setItem('fac',1)
 			setLoading(false);
 			setTimeout(() => {
-				navigate("/colorauth");
+				navigate("/imageauth");
 			}, 2000);
 		} catch (err) {
             toast({

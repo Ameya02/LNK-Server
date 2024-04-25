@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-  console.log(import.meta.env.VITE_API_URL)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
   const [loggedIn, setLoggedIn] = useState(user ? true : false)  
@@ -11,7 +10,6 @@ const Navbar = () => {
     setLoggedIn(false)
     navigate('/login')
   }
-  useEffect(()=>{},[loggedIn])
   return (
     <div className="bg-lavender w-[1440px]  overflow-hidden shrink-0 flex flex-row items-center justify-between py-2 px-[98px] box-border z-[0]">
     <div className="relative w-[130.18px] h-6">

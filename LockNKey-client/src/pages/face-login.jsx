@@ -32,6 +32,7 @@ function Facelogin() {
 			setTimeout(() => {
             localStorage.setItem("user", JSON.stringify(res.data.user))
             window.location.href = "/dashboard"
+            localStorage.removeItem("fac")
 			}, 1000);
 		} catch (err) {
 		toast({
